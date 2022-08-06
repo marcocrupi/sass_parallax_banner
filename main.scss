@@ -1,11 +1,11 @@
 $parallax-height: 100vh;
 $center-margin: 0px auto;
 
-@mixin background-size($cover) {
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+@mixin background-size($size) {
+  background-size: $size;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
 }
 
 @mixin parallax-background($file) {
@@ -13,11 +13,11 @@ $center-margin: 0px auto;
   @include background-size(cover);
 }
 
-@mixin parallaxEffect {
+@mixin parallaxEffect($height) {
   width: 100%;
-  height: $parallax-height;
+  height: $height;
   perspective: 1px;
-  transform: translateZ(-1px);
+//   transform: translateZ(1px);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -44,10 +44,9 @@ body {
 
 #landscape,
 #monkeys {
-  @include parallaxEffect;
+  @include parallaxEffect($parallax-height);
 
   h1 {
-    transform: translateZ(-2px);
     text-transform: uppercase;
     font-family: "Bitter", serif;
     letter-spacing: 0.06em;
@@ -55,6 +54,7 @@ body {
     color: #fff;
     opacity: 0.7;
     text-align: center;
+    transform: translateZ(-2px);
   }
 }
 
